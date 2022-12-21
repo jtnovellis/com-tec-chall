@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <Link href='/'>
-        <h1>Animes</h1>
+        <h1>ANIMES</h1>
       </Link>
     </header>
   );

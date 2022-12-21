@@ -1,8 +1,12 @@
+.section {
+  max-width: 1064px;
+  margin: 0 auto;
+}
 .form {
   border: 1px solid #fff;
   border-radius: 8px;
-  max-width: 20rem;
-  margin: 1rem auto;
+  max-width: 40rem;
+  margin: 1.5rem auto;
   display: flex;
   align-items: center;
   padding: 0.5rem;
@@ -13,6 +17,7 @@
     color: #fff;
     &:focus {
       outline: none;
+      background: none;
     }
     &::placeholder {
       color: #ccc;
@@ -25,6 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
   }
 }
 .list {
@@ -54,5 +60,6 @@
     padding: 5px;
     width: 2rem;
     color: #fff;
+    cursor: pointer;
   }
 }
