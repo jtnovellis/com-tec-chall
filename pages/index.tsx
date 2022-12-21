@@ -5,7 +5,7 @@ import { GetServerSideProps } from 'next';
 import { Anime, Pagination } from '../types';
 import Card from '../components/Card';
 import Loader from '../components/Loader';
-import Link from 'next/link';
+import Error from '../components/Error';
 
 interface HomePageProps {
   animes: Anime[];
@@ -85,16 +85,11 @@ export default function Home({ animes, pagination }: HomePageProps) {
     }
   };
 
-  if (error)
-    return (
-      <p>
-        Ups... Error! <Link href={'/'}>Go home</Link> and try again
-      </p>
-    );
+  if (error) return <Error />;
   if (loading) return <Loader />;
 
   return (
-    <section>
+    <section className={styles.section}>
       <form onSubmit={handleSubmit} className={styles.form}>
         <input
           type='text'
@@ -129,11 +124,11 @@ export default function Home({ animes, pagination }: HomePageProps) {
 export const getServerSideProps: GetServerSideProps = async () => {
   const URI = process.env.API_URL as string;
   const res = await fetch(URI);
-  const data = await res.json();
+  const mainData = await res.json();
   return {
     props: {
-      animes: data.data,
-      pagination: data.pagination,
+      animes: mainData.data,
+      pagination: mainData.pagination,
     },
   };
 };
